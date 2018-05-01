@@ -1,0 +1,16 @@
+Package: hurricane
+Type: Package
+Title: Storm observations geom
+Version: 0.1.0
+Author: F. Max
+Maintainer: Not Maintained <noreply@all>
+Description: The package contains the necessary files to create a new geom
+    based on the ggplot2 package. The geom_hurricane aims at visualizing
+    storm observation data.
+License: CC0
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
