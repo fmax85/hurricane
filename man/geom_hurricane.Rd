@@ -74,7 +74,7 @@ grid object.
 }
 
 \examples{
-# When using `geom_hurricane`, you will typically need a sotrm
+# When using `geom_hurricane`, you will typically need a storm
 # observation data frame, with specific columns. You can find a
 # test dataset along with this package named `ike`. Consider
 # the following code as a test example:
@@ -85,12 +85,10 @@ library(ggplot2)
 ike_1 <- ike \%>\% dplyr::filter(latitude > 29 & latitude < 30)
 map_plot <- ggmap::get_map("Lousiana", zoom = 6, maptype = "toner-background", source = "stamen")
 map <- map_plot \%>\% ggmap::ggmap(extent = "device") +
-geom_hurricane(data = ike_1, mapping = aes(x = longitude, y = latitude, r_ne = ne, r_se = se, r_sw = sw,
-                                           r_nw = nw, fill = wind_speed, colour = wind_speed, scale_radii = 0.4)) +
-scale_color_manual(name = "Wind speed (kts)", values = c("red", "orange", "yellow")) +
-scale_fill_manual(name = "Wind speed (kts)", values = c("red", "orange", "yellow"))
-
-map
+    geom_hurricane(data = ike_1, mapping = aes(x = longitude, y = latitude, r_ne = ne, r_se = se, r_sw = sw,
+                                               r_nw = nw, fill = wind_speed, colour = wind_speed, scale_radii = 0.4)) +
+    scale_color_manual(name = "Wind speed (kts)", values = c("red", "orange", "yellow")) +
+    scale_fill_manual(name = "Wind speed (kts)", values = c("red", "orange", "yellow"))
 }
 
 }
