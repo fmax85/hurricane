@@ -1,7 +1,7 @@
 ---
 title: "hurricane package"
 author: "F. Max"
-date: "`r Sys.Date()`"
+date: "2018-05-02"
 output: 
   html_document:
     df_print: tibble
@@ -12,12 +12,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
 ---
 
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
+
 
 The rationale of this package is to grant peer-grading for the Coursera course of `Building Data Visualization Tools`. As a potentially useful byproduct, the code in this package contains a customized `stat/geom` pair named `*_hurricane` that can be used to visualize storm observation data. Particularly, provided data are arranged in an appropriate way, this `geom` draws the regions of a storm observation corresponding to the same wind speed level, for the four quadrants defined by an origin point. The contour of the "iso-speed" levels are connected by a `polygon` grid object.
 
@@ -41,31 +36,41 @@ The package contains the following *files* and **folders**:
 - *ike-13sep.png* -- picture (same as below) generated using the `geom_hurricane` function
 
 ***
-```{r pressure, echo=FALSE, fig.cap="Ike storm observation with geom_hurricane. Data recorded at 06:00 of 13-Sep, 2008.", out.width = '80%'}
-knitr::include_graphics("../figures/ike-13sep.png")
-```
+<div class="figure">
+<img src="../figures/ike-13sep.png" alt="Ike storm observation with geom_hurricane. Data recorded at 06:00 of 13-Sep, 2008." width="80%" />
+<p class="caption">Ike storm observation with geom_hurricane. Data recorded at 06:00 of 13-Sep, 2008.</p>
+</div>
 
 ***
 ## Code & Data
 
 The reference data of the tropical cyclons is provided in the [EBTD database](http://rammb.cira.colostate.edu/research/tropical_cyclones/tc_extended_best_track_dataset/). The format of the data frame required by the `{stat/geom}_hurricane` functions is shown below:
 
-```{r load_packages, echo=FALSE, message=FALSE}
-library(magrittr)
-library(dplyr)
-```
 
-```{r, load_data, echo=FALSE, message=FALSE}
-load(file = "../data/ike.rda")
-```
 
-```{r, show_data}
+
+
+
+```r
 head(ike, 9)
+#> # A tibble: 9 x 9
+#>   storm_id date      latitude longitude wind_speed    ne    nw    se    sw
+#>   <chr>    <chr>        <dbl>     <dbl> <chr>      <int> <int> <int> <int>
+#> 1 Ike-2008 2008-09-…     17.2     -37.0 34             0     0     0     0
+#> 2 Ike-2008 2008-09-…     17.2     -37.0 50             0     0     0     0
+#> 3 Ike-2008 2008-09-…     17.2     -37.0 64             0     0     0     0
+#> 4 Ike-2008 2008-09-…     17.3     -38.4 34           120    60    75     0
+#> 5 Ike-2008 2008-09-…     17.3     -38.4 50             0     0     0     0
+#> 6 Ike-2008 2008-09-…     17.3     -38.4 64             0     0     0     0
+#> 7 Ike-2008 2008-09-…     17.5     -39.9 34           130    75   110     0
+#> 8 Ike-2008 2008-09-…     17.5     -39.9 50             0     0     0     0
+#> 9 Ike-2008 2008-09-…     17.5     -39.9 64             0     0     0     0
 ```
 
 The `ike` data frame is provided with this package. Such data frame is generated with the following code (see the *data_cleaner.R* script, in the **resource** folder):
 
-```{r data_cleaner, eval=FALSE}
+
+```r
 # Load and tidy ebrtk data
 #
 library(magrittr)
