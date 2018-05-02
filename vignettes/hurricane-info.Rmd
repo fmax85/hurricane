@@ -2,7 +2,9 @@
 title: "hurricane package"
 author: "F. Max"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output:
+    html_document:
+        keep_md: true
 vignette: >
   %\VignetteIndexEntry{hurricane package}
   %\VignetteEngine{knitr::rmarkdown}
@@ -18,10 +20,12 @@ knitr::opts_chunk$set(
 
 The rationale of this package is to grant peer-grading for the Coursera course of `Building Data Visualization Tools`. As a potentially useful byproduct, the code in this package contains a customized `stat/geom` pair named `*_hurricane` that can be used to visualize storm observation data. Particularly, provided data are arranged in an appropriate way, this `geom` draws the regions of a storm observation corresponding to the same wind speed level, for the four quadrants defined by an origin point. The contour of the "iso-speed" levels are connected by a `polygon` grid object.
 
+***
 ## Introduction
 
 The storm observation data that can be fed to `*_hurricane` functions are based on the dataset available at [Tropical cyclone EBTD](http://rammb.cira.colostate.edu/research/tropical_cyclones/tc_extended_best_track_dataset/). An R script describing the required data frame generating process is provided in the package. 
 
+***
 ## Package content
 
 The package contains the following *files* and **folders**:
@@ -37,9 +41,10 @@ The package contains the following *files* and **folders**:
 
 ***
 ```{r pressure, echo=FALSE, fig.cap="Ike storm observation with geom_hurricane. Data recorded at 06:00 of 13-Sep, 2008.", out.width = '80%'}
-knitr::include_graphics("../ike-13sep.png")
+knitr::include_graphics("../figures/ike-13sep.png")
 ```
 
+***
 ## Code & Data
 
 The reference data of the tropical cyclons is provided in the [EBTD database](http://rammb.cira.colostate.edu/research/tropical_cyclones/tc_extended_best_track_dataset/). The format of the data frame required by the `{stat/geom}_hurricane` functions is shown below:
@@ -100,6 +105,12 @@ ike <- tmp %>% mutate(date = as.character(make_datetime(as.integer(year), as.int
     select(storm_id, date, latitude, longitude, wind_speed, ne, nw, se, sw)
 ```
 
+***
+## Warning
+
+Pay attention at the zoom level.
+
+***
 ## References
 
 - R.D. Peng, S. Kross, and B. Anderson, “*Mastering Software Development in R*”, section 4.7: [Building New Graphical Elements](http://rdpeng.github.io/RProgDA/building-new-graphical-elements.html)
@@ -107,3 +118,4 @@ ike <- tmp %>% mutate(date = as.character(make_datetime(as.integer(year), as.int
 - Vignette from the `ggplot2` package, [Extending ggplot2](https://cran.r-project.org/web/packages/ggplot2/vignettes/extending-ggplot2.html)
 - Vignette from the `geosphere` package, [Introduction to the geosphere package](https://cran.r-project.org/web/packages/geosphere/vignettes/geosphere.pdf)
 
+***

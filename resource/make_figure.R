@@ -16,5 +16,5 @@ map <- map_plot %>% ggmap(extent = "device") +
                                                scale_radii = 0.5)) +
     scale_color_manual(name = "Wind speed (kts)", values = c("red", "orange", "yellow")) +
     scale_fill_manual(name = "Wind speed (kts)", values = c("red", "orange", "yellow")) +
-    ggtitle(title, )
-ggsave("ike.png", width = 16/9*h, height = h)
+    ggtitle(title)
+ggsave("ike-13sep.png", width = 16/9*h, height = h)
