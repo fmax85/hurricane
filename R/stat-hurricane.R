@@ -21,7 +21,7 @@
 #'
 #' ike_1 <- ike %>% dplyr::filter(latitude > 29 & latitude < 30)
 #' plot <- ggplot(data = ike_1, mapping = aes(x = longitude, y = latitude)) +
-#' stat_hurricane(mapping = aes(x = longitude, y = latitude, r_ne = ne,mr_se = se, r_sw = sw,
+#' stat_hurricane(mapping = aes(x = longitude, y = latitude, r_ne = ne, r_se = se, r_sw = sw,
 #'                              r_nw = nw, colour = wind_speed), alpha = 0) +
 #' theme_minimal()
 #' }
